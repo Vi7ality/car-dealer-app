@@ -2,12 +2,14 @@
 
 import { getCars } from '@/lib/api/car-api';
 import { ICars } from '@/lib/api/utils/cars-interface';
+import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
 
 export default function VehicleSelector() {
   const [selectedMake, setSelectedMake] = useState('');
   const [selectedYear, setSelectedYear] = useState('');
   const [cars, setCars] = useState<ICars[] | null>(null);
+  const isNextEnabled = selectedMake && selectedYear;
   const getSetCars = useCallback(async () => {
     const res = await getCars();
     setCars(res);
@@ -57,7 +59,14 @@ export default function VehicleSelector() {
           </option>
         ))}
       </select>
-      <button type="submit">Submit</button>
+      <Link
+        href={isNextEnabled ? `/result/${selectedMake}/${selectedYear}` : '#'}
+        passHref
+      >
+        <button disabled={!isNextEnabled} style={{ marginTop: '20px' }}>
+          Next
+        </button>
+      </Link>
     </>
   );
 }

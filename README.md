@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# Car-dealer-app
 
-First, run the development server:
+## Overview
+
+This project is a simple vehicle selector app built with **Next.js** and **Tailwind CSS**. It allows users to select a vehicle make and model year, and then view a list of vehicle models for the selected make and year.
+
+### Key Features
+
+- Fetches and displays a list of vehicle makes using the NHTSA API.
+- Allows users to select a vehicle make and model year.
+- Navigates to a result page with a list of vehicle models based on the selected make and year.
+- Responsive design built using Tailwind CSS.
+- Efficient data fetching with Next.js and React hooks.
+
+## Tech Stack
+
+- **Next.js**: Framework for server-side rendering and static site generation.
+- **React**: Frontend JavaScript library.
+- **Tailwind CSS**: Utility-first CSS framework.
+- **NHTSA API**: Used to fetch vehicle data.
+
+---
+
+## Installation and Setup
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Vi7ality/car-dealer-app
+cd car-dealer-app
+```
+
+### 2. Install Dependencies
+
+Before running the app, install the necessary dependencies:
+
+```bash
+npm install
+```
+
+### 3. Run the Development Server
+
+To start the development server, use the following command:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application will be available at [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 4. Build the Application
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To create a production build, use the following command:
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+This will generate optimized static files for production.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 5. Start the Production Server
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+After building the application, you can start the production server using:
 
-## Deploy on Vercel
+```bash
+npm start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 6. Linting and Formatting
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project uses **ESLint** and **Prettier** for code linting and formatting. You can run linting with:
+
+```bash
+npm run lint
+```
+
+---
+
+## Application Architecture
+
+### Pages
+
+- **Home Page** (`pages/index.tsx`): Allows users to select a vehicle make and model year.
+- **Result Page** (`pages/result/[makeId]/[year].tsx`): Displays a list of vehicle models based on the selected make and year.
+
+### Components
+
+- **Header** (`components/Header.tsx`): A reusable header component styled with Tailwind CSS.
+- **VehicleForm** (`components/VehicleForm.tsx`): The form for selecting vehicle make and model year.
+- **ResultPage** (`pages/result/[makeId]/[year].tsx`): Displays the vehicle models based on the selected parameters.
+- **ContactPage** (`pages/contact/.tsx`): Custom contact page.
+
+---
+
+## API
+
+- Vehicle Makes: [https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json](https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json)
+- Vehicle Models: [https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeIdYear/makeId/{makeId}/modelyear/{year}?format=json](https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeIdYear/makeId/{makeId}/modelyear/{year}?format=json)
+
+---
+
+
+
+

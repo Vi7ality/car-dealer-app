@@ -1,15 +1,17 @@
 'use client';
 
 import { getCars } from '@/lib/api/car-api';
-import { ICars } from '@/lib/api/utils/cars-interface';
+import { ICars } from '@/lib/utils/cars-interface';
 import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
 
 export default function VehicleSelector() {
-  const [selectedMake, setSelectedMake] = useState('');
+  // const [selectedMake, setSelectedMake] = useState('');
   const [selectedYear, setSelectedYear] = useState('');
+  const [selectedId, setSelectedId] = useState('');
   const [cars, setCars] = useState<ICars[] | null>(null);
-  const isNextEnabled = selectedMake && selectedYear;
+  const isNextEnabled = selectedId && selectedYear;
+
   const getSetCars = useCallback(async () => {
     const res = await getCars();
     setCars(res);
@@ -34,13 +36,13 @@ export default function VehicleSelector() {
       <label htmlFor="makes">Vehicle makes:</label>
       <select
         id="makes"
-        value={selectedMake}
-        onChange={e => setSelectedMake(e.target.value)}
+        value={selectedId}
+        onChange={e => setSelectedId(e.target.value)}
       >
         <option value="">Select Make</option>
         {cars !== null &&
           cars.map(car => (
-            <option key={car.MakeId} value={car.MakeName}>
+            <option key={car.MakeId} value={car.MakeId}>
               {car.MakeName}
             </option>
           ))}
@@ -60,7 +62,7 @@ export default function VehicleSelector() {
         ))}
       </select>
       <Link
-        href={isNextEnabled ? `/result/${selectedMake}/${selectedYear}` : '#'}
+        href={isNextEnabled ? `/result/${selectedId}/${selectedYear}` : '#'}
         passHref
       >
         <button disabled={!isNextEnabled} style={{ marginTop: '20px' }}>

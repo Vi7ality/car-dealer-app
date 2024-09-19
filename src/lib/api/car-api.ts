@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { ICars } from './utils/cars-interface';
+import { ICars } from '../utils/cars-interface';
 
 export async function getCars() {
   const res = await fetch(
@@ -8,5 +8,15 @@ export async function getCars() {
   const data = await res.json();
   if (!data) notFound();
   const cars: ICars[] = data.Results;
+  return cars;
+}
+
+export async function getModels(makeId, year) {
+  const res = await fetch(
+    `https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeIdYear/makeId/${makeId}/modelyear/${year}?format=json`
+  );
+  const data = await res.json();
+  if (!data) notFound();
+  const cars = data.Results;
   return cars;
 }

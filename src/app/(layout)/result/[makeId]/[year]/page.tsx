@@ -22,7 +22,7 @@ export async function generateStaticParams() {
   }));
 }
 
-const ResultPage = async ({ params }) => {
+export default async function ResultPage({ params }) {
   const { makeId, year } = params;
   const models = await getModels(makeId, year);
 
@@ -36,6 +36,4 @@ const ResultPage = async ({ params }) => {
       <VehicleModelList models={models} />
     </div>
   );
-};
-
-export default ResultPage;
+}

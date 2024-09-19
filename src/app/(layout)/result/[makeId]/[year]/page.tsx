@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 
 import VehicleModelList from '@/app/components/vehicle-model-list';
 import { getCars, getModels } from '@/lib/api/car-api';
+import { Params } from '@/lib/types/types';
 
 export async function generateStaticParams() {
   const cars = await getCars();
@@ -22,7 +23,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function ResultPage({ params }) {
+export default async function ResultPage({ params }: { params: Params }) {
   const { makeId, year } = params;
   const models = await getModels(makeId, year);
 

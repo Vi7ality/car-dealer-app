@@ -1,6 +1,11 @@
-'use client'; // This directive makes this a Client Component
+'use client';
+import { VehicleModel } from '@/lib/types/types';
 
-export default function VehicleModelList({ models }) {
+interface VehicleModelListProps {
+  models: VehicleModel[];
+}
+
+export default function VehicleModelList({ models }: VehicleModelListProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
       {models.map(model => (

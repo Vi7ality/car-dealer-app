@@ -1,7 +1,7 @@
 'use client';
 
-import { getCars } from '@/lib/api/car-api';
-import { ICars } from '@/lib/types/cars-interface';
+import { getCars } from '@/app/lib/api/car-api';
+import { ICars } from '@/app/lib/types/cars-interface';
 import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
 import generateModelYears from '../utils/generateModelYears';

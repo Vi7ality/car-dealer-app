@@ -1,8 +1,8 @@
 import { notFound } from 'next/navigation';
 
 import VehicleModelList from '@/app/components/vehicle-model-list';
-import { getCars, getModels } from '@/lib/api/car-api';
-import { Params } from '@/lib/types/types';
+import { getCars, getModels } from '@/app/lib/api/car-api';
+import { Params } from '@/app/lib/types/types';
 import generateModelYears from '@/app/utils/generateModelYears';
 
 export async function generateStaticParams() {

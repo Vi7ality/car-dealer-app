@@ -4,6 +4,7 @@ import { getCars } from '@/lib/api/car-api';
 import { ICars } from '@/lib/types/cars-interface';
 import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
+import generateModelYears from '../utils/generateModelYears';
 
 export default function VehicleSelector() {
   const [selectedYear, setSelectedYear] = useState('');
@@ -20,15 +21,6 @@ export default function VehicleSelector() {
     getSetCars();
   }, [getSetCars]);
   const modelYears = generateModelYears();
-
-  function generateModelYears() {
-    const currentYear = new Date().getFullYear();
-    const years = [];
-    for (let year = 2015; year <= currentYear; year++) {
-      years.push(year);
-    }
-    return years;
-  }
 
   return (
     <div className="p-4 max-w-md mx-auto">

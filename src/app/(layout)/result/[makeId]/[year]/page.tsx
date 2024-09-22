@@ -3,13 +3,11 @@ import { notFound } from 'next/navigation';
 import VehicleModelList from '@/app/components/vehicle-model-list';
 import { getCars, getModels } from '@/lib/api/car-api';
 import { Params } from '@/lib/types/types';
+import generateModelYears from '@/app/utils/generateModelYears';
 
 export async function generateStaticParams() {
   const cars = await getCars();
-  const years: string[] = Array.from(
-    { length: new Date().getFullYear() - 2014 },
-    (_, i) => (2015 + i).toString()
-  );
+  const years: string[] = generateModelYears();
 
   const paths = cars.flatMap(car =>
     years.map(year => ({

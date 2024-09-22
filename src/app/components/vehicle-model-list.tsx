@@ -1,5 +1,5 @@
 'use client';
-import { VehicleModel } from '@/lib/types/types';
+import { VehicleModel } from '@/app/lib/types/types';
 
 interface VehicleModelListProps {
   models: VehicleModel[];
